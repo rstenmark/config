@@ -23,11 +23,10 @@ if [ $(id -u) -eq 0 ] ; then
     apt-get install "${packages[@]}" --assume-yes
 
     # Overwrite default configs:
-    cp ./.config/* ~/.config/
-    cp ./etc/* /etc/
-
+    cp ./.config/* /home/${SUDO_USER}/.config/ -rv
+    cp ./etc/* /etc/ -rv
 else
     # Prompt to run as super-user and then quit:
     echo 'Run as super-user.'
-    exit
+    exit 1
 fi

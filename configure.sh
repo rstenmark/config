@@ -6,10 +6,11 @@
 
 # Run as super-user.
 
-packages = (
+packages=(
     gcc
     perl
     build-essential
+    curl
     git
     i3
     python3

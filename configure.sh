@@ -4,7 +4,9 @@
 # Ryan Stenmark <ryanpstenmark@gmail.com>
 # April 9th, 2022
 
-packages=(
+# Run as super-user.
+
+packages = (
     gcc
     perl
     build-essential
@@ -14,15 +16,14 @@ packages=(
     htop
 )
 
-# Run as super-user.
 if [ $(id -u) -eq 0 ] ; then
-    # Update package lists:
+    # Resync package index files from sources
     apt-get update -y
 
-    # Install frequently used packages:
-    apt-get install "${packages[@]}" --assume-yes
+    # Install frequently used packages
+    apt-get install "${packages[@]}" -y
 
-    # Overwrite default configs:
+    # Overwrite default user & system configs
     cp ./.config/* /home/${SUDO_USER}/.config/ -rv
     cp ./etc/* /etc/ -rv
 else

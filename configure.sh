@@ -14,6 +14,7 @@ packages=(
     git
     i3
     python3
+    python3-pip
     htop
 )
 
